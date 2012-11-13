@@ -46,7 +46,7 @@ module.exports = function(grunt) {
     var done = this.async();
 
     verbose.subhead(data.command);
-    grunt.helper('exec', data.command, function(err, stdout) {
+    exec(data.command, function(err, stdout) {
       // if configured, log stdout
       data.stdout && stdout && log.write(stdout);
 
@@ -59,11 +59,11 @@ module.exports = function(grunt) {
   // helper
   // ------
 
-  grunt.registerHelper('exec', function(command, callback) {
+  function exec(command, callback) {
     cp.exec(command, function(err, stdout, stderr) {
       if (err || stderr) { callback(err || stderr, stdout); return; }
 
       callback(null, stdout);
     });
-  });
+  }
 };

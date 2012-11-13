@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
   var task = grunt.task;
   var file = grunt.file;
-  var utils = grunt.utils;
+  var util = grunt.util;
   var log = grunt.log;
   var verbose = grunt.verbose;
   var fail = grunt.fail;
@@ -34,11 +34,11 @@ module.exports = function(grunt) {
       return false;
     }
 
-    if (utils._.isFunction(data.command)) {
+    if (util._.isFunction(data.command)) {
         data.command = data.command(grunt);
     }
 
-    if (!utils._(data.command).isString()) {
+    if (!util._(data.command).isString()) {
       grunt.warn('The command property must be a string.');
       return false;
     }

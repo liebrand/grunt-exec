@@ -44,9 +44,10 @@ module.exports = function(grunt) {
     }
 
     var done = this.async();
+    var options = data.options || {};
 
     verbose.subhead(data.command);
-    exec(data.command, function(err, stdout) {
+    exec(data.command, options, function(err, stdout) {
       // if configured, log stdout
       data.stdout && stdout && log.write(stdout);
 
@@ -59,8 +60,8 @@ module.exports = function(grunt) {
   // helper
   // ------
 
-  function exec(command, callback) {
-    cp.exec(command, function(err, stdout, stderr) {
+  function exec(command, options, callback) {
+    cp.exec(command, options, function(err, stdout, stderr) {
       if (err || stderr) { callback(err || stderr, stdout); return; }
 
       callback(null, stdout);

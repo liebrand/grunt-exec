@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
   var task = grunt.task;
   var file = grunt.file;
-  var util = grunt.util;
+  var util = grunt.utils || grunt.util;
   var log = grunt.log;
   var verbose = grunt.verbose;
   var fail = grunt.fail;
